@@ -1,6 +1,7 @@
 plugins {
     id "java"
     id "edu.wpi.first.GradleRIO" version "2022.2.1"
+    id "com.diffplug.spotless" version "6.2.0"
 }
 
 sourceCompatibility = JavaVersion.VERSION_11
@@ -85,3 +86,11 @@ jar {
 deployArtifact.jarTask = jar
 wpi.java.configureExecutableTasks(jar)
 wpi.java.configureTestTasks(test)
+
+apply plugin: 'com.diffplug.spotless'
+spotless {
+    java {
+        importOrder 'java', 'javax', 'org', 'com', ''
+        removeUnusedImports()
+    }
+}
