@@ -8,9 +8,12 @@ import frc.robot.commands.DriverCommand;
 import frc.robot.commands.shootCommand;
 import frc.robot.subsystems.MyDriveTrain;
 import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.HangerSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.stopShoot;
+import frc.robot.commands.hangCommand;
+import frc.robot.commands.stopHangCommand;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -29,6 +32,10 @@ public class RobotContainer
   private final ShooterSubsystem shooterSubSys = new ShooterSubsystem();
   private final shootCommand shoot = new shootCommand(shooterSubSys);
   private final stopShoot stopShoot = new stopShoot(shooterSubSys);
+
+  private final HangerSubsystem hanger = new HangerSubsystem();
+  private final hangCommand hang = new hangCommand(hanger);
+  private final stopHangCommand stopHang = new stopHangCommand(hanger);
   
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -54,6 +61,12 @@ public class RobotContainer
     // Turn on shooter when button is pressed
     triggerButton.whenReleased(stopShoot);
     // Turn off shooter when button is released
+    JoystickButton hangButton = new JoystickButton(new Joystick(0), 4);
+    //sets hang button
+    hangButton.whenPressed(hang);
+    //Turn on hanger when button is pressed
+    hangButton.whenReleased(stopHang);
+    //Turn off hanger when button is released
   }
 
   /**
