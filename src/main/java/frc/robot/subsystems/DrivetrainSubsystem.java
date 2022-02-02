@@ -2,6 +2,8 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
+//added :)
+
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -16,7 +18,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 
   
-public class MyDriveTrain extends SubsystemBase
+public class DrivetrainSubsystem extends SubsystemBase
  {
 
   // in our robot we have two motors on left
@@ -37,7 +39,7 @@ public class MyDriveTrain extends SubsystemBase
   // Sets Drive joystick port
 
   /** Creates a new MyDriveTrain. */
-  public MyDriveTrain() 
+  public DrivetrainSubsystem() 
   {
 
   }
@@ -52,16 +54,12 @@ public class MyDriveTrain extends SubsystemBase
   /** This is the method that makes the bot go fwd. It takes the X and Y from the joystick */
   public void driveTheBot()
   {
-    m_robotDrive.arcadeDrive(-.80 * m_stick.getY(), .6 * m_stick.getX());
+    m_robotDrive.tankDrive(m_stick.getRawAxis(1)*0.8, m_stick.getRawAxis(3)*0.8);;
   }
 
 
-  /** This method stops the bot by stopping all the motors */
-  public void stopDriving()
-  {
-    m_robotDrive.stopMotor();
-  }
-
+  // might need to add a stop motor method
+  
 
   /**  This method drives the robot forward 
    * This can be called by the autonomous routine

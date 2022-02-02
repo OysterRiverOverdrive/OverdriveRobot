@@ -15,6 +15,7 @@ private final PWMVictorSPX m_left1 = new PWMVictorSPX(8);
 
 
 private final Joystick m_stick = new Joystick(0);
+
   /** Creates a new IntakeSubsystem. */
   public IntakeSubsystem() {}
 
