@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 public class IntakeSubsystem extends SubsystemBase 
 {
 
-private final PWMVictorSPX m_left1 = new PWMVictorSPX(4);
-private final PWMVictorSPX m_right1 = new PWMVictorSPX(5);
+private final PWMVictorSPX m_left1 = new PWMVictorSPX(8);
+private final PWMVictorSPX m_right1 = new PWMVictorSPX(9);
 
 private final Joystick m_stick = new Joystick(0);
 
