@@ -2,7 +2,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.AutoDriveCommand;
 import frc.robot.commands.DriverCommand;
 import frc.robot.commands.shootCommand;
