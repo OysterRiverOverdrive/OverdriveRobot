@@ -6,8 +6,6 @@ package frc.robot.commands;
 
 // Libraries used by this command
 import edu.wpi.first.wpilibj2.command.CommandBase;
-
-// remember that a command needs a subsystem ALWAYS
 import frc.robot.subsystems.MyDriveTrain;
 
 public class DriverCommand extends CommandBase 
