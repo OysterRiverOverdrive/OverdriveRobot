@@ -6,17 +6,17 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.MyDriveTrain;
+import frc.robot.subsystems.DrivetrainSubsystem;
 
 
 public class AutoDriveCommand extends CommandBase
  {
 
-  private static MyDriveTrain my_Auto_driveTrain ;
+  private static DrivetrainSubsystem my_Auto_driveTrain ;
   private Timer m_timer = new Timer();
   /** Creates a new AutoDriveCommand. */
    /** Creates a new DriverCommand. */
-   public AutoDriveCommand(MyDriveTrain drvTrain) 
+   public AutoDriveCommand(DrivetrainSubsystem drvTrain) 
    {
      // Use addRequirements() here to declare subsystem dependencies.
      my_Auto_driveTrain = drvTrain;

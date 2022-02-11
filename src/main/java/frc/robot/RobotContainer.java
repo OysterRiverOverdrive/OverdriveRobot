@@ -9,7 +9,7 @@ import frc.robot.commands.AutoDriveCommand;
 import frc.robot.commands.DriverCommand;
 import frc.robot.commands.shootCommand;
 import frc.robot.commands.stopShoot;
-import frc.robot.subsystems.MyDriveTrain;
+import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
 /**
@@ -22,7 +22,7 @@ public class RobotContainer
 {
   // The robot's subsystems and commands are defined here...
   
-  private final MyDriveTrain dt = new MyDriveTrain();
+  private final DrivetrainSubsystem dt = new DrivetrainSubsystem();
   private final DriverCommand dCmd = new DriverCommand(dt);
   private final AutoDriveCommand dAutoCmd = new AutoDriveCommand(dt);
   

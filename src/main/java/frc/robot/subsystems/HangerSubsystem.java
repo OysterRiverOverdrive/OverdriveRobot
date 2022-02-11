@@ -12,28 +12,28 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
   
-public class MyDriveTrain extends SubsystemBase
+public class HangerSubsystem extends SubsystemBase
  {
 
   // in our robot we have two motors on left
-  private final PWMVictorSPX m_left1 = new PWMVictorSPX(0);
-  private final PWMVictorSPX m_left2 = new PWMVictorSPX(1);
-  MotorControllerGroup m_left = new MotorControllerGroup(m_left1, m_left2);
+  private final PWMVictorSPX m_1 = new PWMVictorSPX(0);
+  private final PWMVictorSPX m_2 = new PWMVictorSPX(1);
+  MotorControllerGroup m_bottom = new MotorControllerGroup(m_1, m_2);
 
   // in our robot we have two motors on right
-  private final PWMVictorSPX m_right1 = new PWMVictorSPX(2);
-  private final PWMVictorSPX m_right2 = new PWMVictorSPX(3);
-  MotorControllerGroup m_right = new MotorControllerGroup(m_right1, m_right2);
+  private final PWMVictorSPX m_3 = new PWMVictorSPX(2);
+  private final PWMVictorSPX m_4 = new PWMVictorSPX(3);
+  MotorControllerGroup m_upper = new MotorControllerGroup(m_3, m_4);
 
   // we use diffrential drive
-  private final DifferentialDrive m_robotDrive = new DifferentialDrive(m_left, m_right);
+  private final DifferentialDrive m_robotHang = new DifferentialDrive(m_bottom, m_upper);
 
   // we use two joysticks.
-  private final Joystick m_stick = new Joystick(0);
+  // private final Joystick m_stick = new Joystick(0);
   // Sets Drive joystick port
 
   /** Creates a new MyDriveTrain. */
-  public MyDriveTrain() 
+  public HangerSubsystem() 
   {
 
   }
@@ -46,25 +46,21 @@ public class MyDriveTrain extends SubsystemBase
 
 
   /** This is the method that makes the bot go fwd. It takes the X and Y from the joystick */
-  public void driveTheBot()
+  public void starthang()
   {
-    m_robotDrive.arcadeDrive(-.80 * m_stick.getY(), .6 * m_stick.getX());
+    // m_robotHang.set(1.0);
   }
 
 
   /** This method stops the bot by stopping all the motors */
-  public void stopDriving()
+  public void stophang()
   {
-    m_robotDrive.stopMotor();
+    
   }
 
 
   /**  This method drives the robot forward 
    * This can be called by the autonomous routine
   */
-  public void autoDrive()
-  {
-    m_robotDrive.tankDrive(.8, .8);
-  }
-
+  
 }
