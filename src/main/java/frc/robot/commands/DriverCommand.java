@@ -6,15 +6,15 @@ package frc.robot.commands;
 
 // Libraries used by this command
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.MyDriveTrain;
+import frc.robot.subsystems.DrivetrainSubsystem;
 
 public class DriverCommand extends CommandBase 
 {
 
-   private static MyDriveTrain my_driveTrain ;
+   private static DrivetrainSubsystem my_driveTrain ;
   
   /** Creates a new DriverCommand. The constructor takes the subsystem */
-  public DriverCommand(MyDriveTrain drvTrain) 
+  public DriverCommand(DrivetrainSubsystem drvTrain) 
   {
     // Use addRequirements() here to declare subsystem dependencies.
     my_driveTrain = drvTrain;
