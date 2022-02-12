@@ -30,6 +30,7 @@ public class DrivetrainSubsystem extends SubsystemBase
 
   // we use two joysticks.
   private final Joystick m_stick = new Joystick(0);
+  private final Joystick m_action = new Joystick(1);
   // Sets Drive joystick port
 
   /** Creates a new MyDriveTrain. */
@@ -48,7 +49,8 @@ public class DrivetrainSubsystem extends SubsystemBase
   /** This is the method that makes the bot go fwd. It takes the X and Y from the joystick */
   public void driveTheBot()
   {
-    m_robotDrive.arcadeDrive(-.80 * m_stick.getY(), .6 * m_stick.getX());
+    // m_robotDrive.arcadeDrive(-.80 * m_stick.getY(), .6 * m_stick.getX());
+    m_robotDrive.tankDrive(.8*m_stick.getY(), .8*m_action.getY());
   }
 
 
