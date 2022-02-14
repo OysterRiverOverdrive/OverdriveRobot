@@ -1,6 +1,3 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.subsystems;
 
@@ -10,59 +7,96 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
+import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
 
-  
-public class HangerSubsystem extends SubsystemBase
- {
-
-  // in our robot we have two motors on left
-  private final PWMVictorSPX m_1 = new PWMVictorSPX(0);
-  private final PWMVictorSPX m_2 = new PWMVictorSPX(1);
-  MotorControllerGroup m_bottom = new MotorControllerGroup(m_1, m_2);
-
-  // in our robot we have two motors on right
-  private final PWMVictorSPX m_3 = new PWMVictorSPX(2);
-  private final PWMVictorSPX m_4 = new PWMVictorSPX(3);
-  MotorControllerGroup m_upper = new MotorControllerGroup(m_3, m_4);
-
-  // we use diffrential drive
-  private final DifferentialDrive m_robotHang = new DifferentialDrive(m_bottom, m_upper);
-
-  // we use two joysticks.
-  // private final Joystick m_stick = new Joystick(0);
-  // Sets Drive joystick port
-
-  /** Creates a new MyDriveTrain. */
-  public HangerSubsystem() 
-  {
-
-  }
-
-  @Override
-  public void periodic()
-   {
-    // This method will be called once per scheduler run
-  }
-
-
-  /** This is the method that makes the bot go fwd. It takes the X and Y from the joystick */
-  public void starthang()
-  {
-    // m_robotHang.set(1.0);
-  }
-
-
-  /** This method stops the bot by stopping all the motors */
-  public void stophang()
-  {
+public class HangerSubsystem extends SubsystemBase {
     
-  }
+    PWMVictorSPX armMotor1 = new PWMVictorSPX(6);
+    PWMVictorSPX armMotor2 = new PWMVictorSPX(7);
+    MotorControllerGroup armGroup = new MotorControllerGroup(armMotor1, armMotor2);
+    PWMVictorSPX clipMotor1 = new PWMVictorSPX(8);
+    PWMVictorSPX clipMotor2 = new PWMVictorSPX(9);
+    MotorControllerGroup clipGroup = new MotorControllerGroup(clipMotor1, clipMotor2);
+    PWMVictorSPX rotateMotor = new PWMVictorSPX(10);
+
+    private DutyCycleEncoder arm_Encoder = new DutyCycleEncoder(0);
+    private DutyCycleEncoder clip_Encoder = new DutyCycleEncoder(0);
+    private DutyCycleEncoder rotate_Encoder = new DutyCycleEncoder(0);
+    
+    public void armUp(int upDist){
+        arm_Encoder.reset();
+        if(arm_Encoder.getDistance() < upDist){
+            armGroup.set(1.0);
+        }
+        else{
+            armGroup.set(0.0);
+        }
+    }
+
+    public void armDown(int downDist){
+        arm_Encoder.reset();
+        armGroup.setInverted(true);
+        if(arm_Encoder.getDistance() < downDist){
+            armGroup.set(1.0);
+        }
+        else{
+            armGroup.set(0.0);
+        }
+    }
+    public void rotateRight(int rightDist){
+        rotate_Encoder.reset();
+        if(rotate_Encoder.getDistance() < rightDist)
+        {
+            rotateMotor.set(1.0);
+        }
+        else{
+            rotateMotor.set(0.0);
+        }
+    }
+
+    public void rotateLeft(int leftDist){
+        rotate_Encoder.reset();
+        rotateMotor.setInverted(true);
+        if(rotate_Encoder.getDistance() < leftDist)
+        {
+            rotateMotor.set(1.0);
+        }
+        else{
+            rotateMotor.set(0.0);
+        }   
+    }
+
+    public void clipUp(int clipUpDist){
+        clip_Encoder.reset();
+        if(clip_Encoder.getDistance() < clipUpDist){
+            clipGroup.set(1.0);
+        }
+        else{
+            clipGroup.set(0.0);
+        }
+    }
+
+    public void clipDown(int clipDownDist){
+        clip_Encoder.reset();
+        if(clip_Encoder.getDistance() < clipDownDist){
+            clipGroup.set(1.0);
+        }
+        else{
+            clipGroup.set(0.0);
+        }
+    }
 
 
-  /**  This method drives the robot forward 
-   * This can be called by the autonomous routine
-  */
-  
-}
+    public HangerSubsystem() {}
+
+    @Override
+    public void periodic() {
+      arm_Encoder.setDistancePerRotation(1.0);
+      clip_Encoder.setDistancePerRotation(1.0);
+      rotate_Encoder.setDistancePerRotation(1.0);
+    }
+    // This method will be called once per scheduler run
