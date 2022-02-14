@@ -4,19 +4,15 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
-/** These are the imports for the libraries that this sub system will use */
-
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
-import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
-
   
-public class MyDriveTrain extends SubsystemBase
+public class DrivetrainSubsystem extends SubsystemBase
  {
 
   // in our robot we have two motors on left
@@ -37,7 +33,7 @@ public class MyDriveTrain extends SubsystemBase
   // Sets Drive joystick port
 
   /** Creates a new MyDriveTrain. */
-  public MyDriveTrain() 
+  public DrivetrainSubsystem() 
   {
 
   }

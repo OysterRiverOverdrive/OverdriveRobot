@@ -1,3 +1,4 @@
+
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
@@ -93,5 +94,3 @@ public class HangerSubsystem extends SubsystemBase {
       rotate_Encoder.setDistancePerRotation(1.0);
     }
     // This method will be called once per scheduler run
-
-}
