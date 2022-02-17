@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
@@ -49,6 +50,8 @@ public class MyDriveTrain extends SubsystemBase
   public void driveTheBot()
   {
     m_robotDrive.arcadeDrive(-.80 * m_stick.getY(), .6 * m_stick.getX());
+    SmartDashboard.putNumber("courtny is great", 100);
+    SmartDashboard.putNumber("Courtney is still Great", 100);
   }
 
 

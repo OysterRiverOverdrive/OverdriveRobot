@@ -1,0 +1,26 @@
+{
+  "NTProvider": {
+    "types": {
+      "/FMSInfo": "FMSInfo",
+      "/LiveWindow/MyDriveTrain": "Subsystem",
+      "/LiveWindow/ShooterSubsystem": "Subsystem",
+      "/LiveWindow/Ungrouped/DifferentialDrive[1]": "DifferentialDrive",
+      "/LiveWindow/Ungrouped/MotorControllerGroup[3]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
+      "/SmartDashboard/AutoDriveCommand": "Command",
+      "/SmartDashboard/DriverCommand": "Command",
+      "/SmartDashboard/MyDriveTrain": "Subsystem",
+      "/SmartDashboard/ShooterSubsystem": "Subsystem",
+      "/SmartDashboard/shootCommand": "Command",
+      "/SmartDashboard/stopShoot": "Command"
+    }
+  },
+  "NetworkTables": {
+    "SmartDashboard": {
+      "DriverCommand": {
+        "open": true
+      },
+      "open": true
+    }
+  }
+}

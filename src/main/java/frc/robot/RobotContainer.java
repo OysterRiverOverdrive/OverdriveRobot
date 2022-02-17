@@ -2,7 +2,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.AutoDriveCommand;
@@ -11,6 +13,9 @@ import frc.robot.commands.shootCommand;
 import frc.robot.commands.stopShoot;
 import frc.robot.subsystems.MyDriveTrain;
 import frc.robot.subsystems.ShooterSubsystem;
+//import edu.wpi.first.wpilibj;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -29,15 +34,63 @@ public class RobotContainer
   private final ShooterSubsystem shooterSubSys = new ShooterSubsystem();
   private final shootCommand shoot = new shootCommand(shooterSubSys);
   private final stopShoot stopShoot = new stopShoot(shooterSubSys);
+  private final PowerDistribution powerDistribution;
   
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() 
   {
+    powerDistribution = new PowerDistribution(0, PowerDistribution.ModuleType.kCTRE);
+    
     // this is the defaut command and is always scheduled if nothing else is using the same sub system
     dt.setDefaultCommand(dCmd);
     // Configure the button bindings
     configureButtonBindings();
+
+    SmartDashboard.putData(dt);
+    SmartDashboard.putData(dCmd);
+    SmartDashboard.putData(dAutoCmd);
+    
+    SmartDashboard.putData(shooterSubSys);
+    SmartDashboard.putData(shoot);
+    SmartDashboard.putData(stopShoot);
+    
+
+    SmartDashboard.putNumber("Temperature", powerDistribution.getTemperature());
+    SmartDashboard.putNumber("Total Current", powerDistribution.getTotalCurrent());
+    SmartDashboard.putNumber("Voltage", powerDistribution.getVoltage());
+    SmartDashboard.putNumber("Power", powerDistribution.getTotalPower());
+    
+
+    if (powerDistribution.getTemperature() > 35) {
+      SmartDashboard.putBoolean("Temp is High", false);
+    } else {
+      SmartDashboard.putBoolean("Temp is Ok", true);
+    }
+
+
+    if (powerDistribution.getTotalCurrent() < 20) {
+      SmartDashboard.putBoolean("Current is High", false);
+    } else {
+      SmartDashboard.putBoolean("Current is Fine", true);
+    }
+
+    if (powerDistribution.getVoltage() > 1 ) {
+      SmartDashboard.putBoolean("Voltage is High", true);
+    } else {
+      SmartDashboard.putBoolean("Voltage is Fine", false);
+    }
+
+    if (powerDistribution.getTotalPower() < 1) {
+      SmartDashboard.putBoolean("Power is Fine", true);
+    } else {
+      SmartDashboard.putBoolean("Power is High", false);
+    }
+
+    // add lidar, camera and color sensor
+    
+
+  
   }
 
   /**
@@ -66,4 +119,7 @@ public class RobotContainer
     // Command will run in autonomous
     return dAutoCmd;
   }
+
+
+
 }
