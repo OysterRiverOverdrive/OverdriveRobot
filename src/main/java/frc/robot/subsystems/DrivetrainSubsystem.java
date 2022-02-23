@@ -54,7 +54,7 @@ public class DrivetrainSubsystem extends SubsystemBase
   /** This is the method that makes the bot go fwd. It takes the X and Y from the joystick */
   public void driveTheBot()
   {
-    m_robotDrive.tankDrive(m_stick.getRawAxis(1)*0.8, m_stick.getRawAxis(3)*0.8);;
+    m_robotDrive.arcadeDrive(m_stick.getRawAxis(4)*0.7, m_stick.getRawAxis(1)*-0.8);;
   }
 
 
