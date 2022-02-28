@@ -23,6 +23,14 @@ public class HangerSubsystem extends SubsystemBase {
     public HangerSubsystem() {}
 
     @Override
+<<<<<<< Updated upstream
     public void periodic() {}
+=======
+    public void periodic() {
+      arm_Encoder.setDistancePerRotation(1.0);
+      clip_Encoder.setDistancePerRotation(1.0);
+      rotate_Encoder.setDistancePerRotation(1.0);
+    }}
+>>>>>>> Stashed changes
     // This method will be called once per scheduler run
 }
