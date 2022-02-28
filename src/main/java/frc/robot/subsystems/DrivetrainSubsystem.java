@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
   
@@ -42,6 +43,8 @@ public class DrivetrainSubsystem extends SubsystemBase
   @Override
   public void periodic()
    {
+    // double dist_test1 = m_left1;
+    // SmartDashboard.putNumber("left front", dist_test1);
     // This method will be called once per scheduler run
   }
 
